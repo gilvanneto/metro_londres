@@ -1,0 +1,44 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+#
+1 2 [c] Ter uma conexão à internet e acesso ao sistema
+2 3 [s] Usuário acessa o sistema
+3 4 [e] system exibe opcões e solicita ação do usuário
+4 5 [s] Usuário seleciona a opção 1(encontrar trajeto)
+5 6 [e] system solicita estação de origem
+6 7 [s] Usuário digita estação de origem
+7 8 [e] system solicita estação de destino
+8 9 [s] Usuário digita estação de destino
+9 10 [e] system solicita quantidade de trajetos
+10 11 [s] Usuário digita quantidade de trajetos
+11 12 [e] system pergunta se o usuário deseja excluir alguma linha
+12 13 [s] Usuário usuário opta por não excluir linha
+13 14 [e] system exibe trajetos possíveis
+14 15 [c] O usuário conseguiu visualizar todas as rotas válidas
+5 13 [e] system receber como entrada valores inválidos
+6 13 [s] Usuário seleciona a opção de cancelar a solicitação
+6 6 [s] Usuário Digita novamente o nome da Estação
+7 13 [e] system receber como entrada valores inválidos
+8 13 [s] Usuário seleciona a opção de cancelar a solicitação
+8 8 [s] Usuário Digita novamente o nome da Estação
+12 13 [s] Usuário seleciona a opção de cancelar a solicitação
+12 16 [s] Usuário seleciona a opção de excluir linha
+16 17 [e] system solicita qual linha o usuário quer excluir
+17 18 [s] Usuário digita a linha que será excluida
+18 15 [e] system exibe os caminhos com a linha excluida

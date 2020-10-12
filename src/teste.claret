@@ -1,0 +1,53 @@
+systemName "Trajetos do Metrô de Londres"
+
+maxTestCaseSize 6
+
+usecase "Encontra trajeto" {
+	version "0.1" type "Creation" user "Kelvin-Gilvan-Wesley" date "12/10/2020"
+  	actor usuarioDoSistema "Usuário"
+	
+	preCondition "Ter uma conexão à internet e acesso ao sistema" 
+	
+	basic {
+		step 1 usuarioDoSistema "acessa o sistema" 
+   	    step 2 system "exibe opcões e solicita ação do usuário"
+   		step 3 usuarioDoSistema "seleciona a opção 1(encontrar trajeto)" 
+  		step 4 system "solicita estação de origem" ef[1]
+  		step 5 usuarioDoSistema "digita estação de origem" af[1,3] 
+  		step 6 system "solicita estação de destino" ef[1]
+  		step 7 usuarioDoSistema "digita estação de destino" af[1,4]
+  		step 8 system "solicita quantidade de trajetos"
+  		step 9 usuarioDoSistema "digita quantidade de trajetos" 
+  		step 10 system "pergunta se o usuário deseja excluir alguma linha"
+  		step 11 usuarioDoSistema "usuário opta por não excluir linha" af[1,2]
+  		step 12 system "exibe trajetos possíveis"
+	}
+	
+	// Alternatives scenarios here...
+ 	 alternative 1 "Usuário cancela solicitação" {
+  		step 1 usuarioDoSistema "seleciona a opção de cancelar a solicitação" bs 12
+ 
+  	}
+  
+ 	 alternative 2 "Usuário opta por excluir alguma linha" {
+  		step 1 usuarioDoSistema "seleciona a opção de excluir linha"
+  		step 2 system "solicita qual linha o usuário quer excluir"
+  		step 3 usuarioDoSistema "digita a linha que será excluida" 
+		step 4 system "exibe os caminhos com a linha excluida"
+
+ 	 }
+	
+	alternative 3 "Estação de origem não existe" {
+		step 1 usuarioDoSistema "Digita novamente o nome da Estação" bs 5
+  	}
+  	
+  	alternative 4 "Estação de destino não existe" {
+  		step 1 usuarioDoSistema "Digita novamente o nome da Estação" bs 7
+  	}
+
+	exception 1 "Valores Inválidos" {
+  	step 1 system "receber como entrada valores inválidos" bs 12
+  }
+	
+	postCondition "O usuário conseguiu visualizar todas as rotas válidas"
+}
